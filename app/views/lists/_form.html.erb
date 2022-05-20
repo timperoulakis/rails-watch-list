@@ -1,5 +1,6 @@
 <%= simple_form_for @list do |form| %>
   <%= form.input :name %>
-  <%= form.input :image %>
+  <%= form.input :image, label: "Image URL" %>
+  <%= form.input :photo, as: :file, label: "Upload image" %>
   <%= form.button :submit, class: "btn btn-outline-primary" %>
 <% end %>
