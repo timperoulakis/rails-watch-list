@@ -25,3 +25,8 @@ movies = JSON.parse(File.open(File.join(__dir__, "seeds/top250.json")).read)
     rating_metacritic: details["metacriticRating"].to_i
   )
 end
+
+list = List.create(name: "IMDb top 20 movies", image: "https://static.amazon.jobs/teams/53/images/IMDb_Header_Page.jpg")
+Movie.first(20).each do |movie|
+  Bookmark.create!(comment: "Number #{movie.id} rated movie on IMDb", list: list, movie: movie)
+end
