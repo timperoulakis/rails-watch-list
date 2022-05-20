@@ -1,0 +1,5 @@
+<%= simple_form_for [@list, @bookmark] do |form| %>
+<%= form.association :movie, collection: Movie.order(:title), prompt: "Pick a movie", disabled: @list.movies.map(&:id) %>
+<%= form.input :comment %>
+<%= form.button :submit, class: "btn btn-outline-primary" %>
+<% end %>

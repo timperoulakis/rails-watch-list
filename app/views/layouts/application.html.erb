@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>RailsWatchList</title>
+    <%= favicon_link_tag asset_path("logo.png") %>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +12,19 @@
   </head>
 
   <body>
+    <nav class="navbar bg-light navbar-expand ">
+      <div class="container-fluid d-flex">
+        <%= link_to root_path, class: "navbar-brand" do %>
+          <%= image_tag "https://cdn-icons-png.flaticon.com/512/3418/3418886.png", size: "30x30" %>
+            popcorn
+        <% end %>
+        <!--<form id="search-bar" class="d-flex flex-grow-1">
+          <input type="search" class="form-control" name="query" placeholder="search" value="<%= params[:query] %>">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>-->
+        <%= link_to "New list", new_list_path, class: "btn btn-outline-primary ml-5" %>
+      </div>
+    </nav>
     <%= yield %>
   </body>
 </html>

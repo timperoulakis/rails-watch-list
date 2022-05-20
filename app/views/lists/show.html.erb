@@ -1,0 +1,23 @@
+<div class="container">
+  <h1><%= @list.name %></h1>
+  <div class="cards">
+    <% @list.movies.each do |movie| %>
+      <div class="movie-card">
+        <%= image_tag movie.poster_url, size: "150x248", style: "border-radius: 5px; object-fit: cover" %>
+        <!--<div style="width: 300px; background-image: url(<%= movie.poster_url %>); background-size: cover; background-position: center; "></div>-->
+        <div class="d.flex flex-column p-2" style="overflow:scroll">
+          <h3><%= movie.title %></h2>
+          <p><%= movie.overview %></p>
+        </div>
+        <%= link_to bookmark_path(@list.bookmarks.find_by_movie_id(movie.id)), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "text-danger delete" do %>
+          <i class="fa-solid fa-trash-can"></i>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <!--<%= link_to "Add a movie", new_list_bookmark_path(@list) %>-->
+  <button class="btn btn-primary">Add a movie</button>
+  <div>
+    <%= render "bookmarks/form" %>
+  </div>
+</div>
